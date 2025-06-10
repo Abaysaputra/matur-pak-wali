@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Peta Wilayah Surabaya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    // Inisialisasi peta
+    var map = L.map('map').setView([-7.25, 112.75], 11); // Koordinat tengah Surabaya
+
+    // Tambahkan tile layer dari OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Load file GeoJSON
+    fetch('surabaya.geojson')
+      .then(response => response.json())
+      .then(data => {
+        // Tambahkan GeoJSON ke peta
+        var geojsonLayer = L.geoJSON(data, {
+          style: {
+            color: 'blue',
+            weight: 2,
+            fillColor: 'lightblue',
+            fillOpacity: 0.4
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties && feature.properties.name) {
+              layer.bindPopup("Wilayah: " + feature.properties.name);
+            }
+          }
+        }).addTo(map);
+
+        // Fokuskan peta ke wilayah GeoJSON
+        map.fitBounds(geojsonLayer.getBounds());
+      })
+      .catch(error => {
+        console.error("Gagal memuat GeoJSON:", error);
+      });
+  </script>
+
+</body>
+</html>
