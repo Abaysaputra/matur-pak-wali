@@ -66,7 +66,7 @@ $row = mysqli_fetch_array($sql);
 
 <body>
     <div class="container-fluid py-4">
-        <h3 class="card-title text-center mb-4">Detail Pengaduan</h3>
+        <h3 class="card-title text-center mb-4">Detail Pengaduan Masuk</h3>
 
         <div class="card shadow-lg card-detail-custom">
             <div class="card-body p-4">
@@ -108,7 +108,7 @@ $row = mysqli_fetch_array($sql);
                                 
                             }
                         ?>
-                <form action="../../back/pengaduan/status.php" method="post" class="tambah m-0" enctype="multipart/form-data">
+                    <form action="../../back/pengaduan/status.php" method="post" class="tambah m-0" enctype="multipart/form-data">
                     <div>
                         <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>" />
                         <input type="hidden" name="status" value="<?php echo $status;?>" />
@@ -124,7 +124,7 @@ $row = mysqli_fetch_array($sql);
                     ?>
                 </form>
                 </div>
-                    </div>
+            </div>
 
                     <div class="col-lg-5 col-md-12 text-center d-flex flex-column justify-content-between align-items-center">
                         <div class="mb-4">
@@ -138,7 +138,6 @@ $row = mysqli_fetch_array($sql);
                                 <p class="text-muted">Tidak ada gambar terlampir.</p>
                             <?php endif; ?>
                         </div>
-                        
                         <div class="mt-auto w-100">
                             <a href="respon.php?id_pengaduan=<?php echo htmlspecialchars($id); ?>" class="btn btn-danger w-100">Berikan Respon</a>
                         </div>
@@ -147,42 +146,30 @@ $row = mysqli_fetch_array($sql);
             </div>
         </div>
     </div>
-                <br>
-
-                <!-- button -->
-                    
-
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Gambar Pengaduan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="d-flex mt-auto">
-                    
-        </div>
-    </div>
-    
-<!-- Modal -->
-<div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Image</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <img style="width:80%; height:60vh;" src="../../assets/img/<?php echo $row['gambar']; ?>" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> 
-    </div>
-    <div class="corner2"></div> 
-                
+                <div class="modal-body text-center">
+                    <?php if (!empty($row['gambar'])): ?>
+                        <img src="../../assets/img/<?php echo htmlspecialchars($row['gambar']); ?>" class="img-fluid" alt="Gambar Pengaduan Besar">
+                    <?php else: ?>
+                        <p class="text-muted">Tidak ada gambar terlampir.</p>
+                    <?php endif; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
             </div>
         </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-     <div class="corner2"></div> 
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
 
 </html>
