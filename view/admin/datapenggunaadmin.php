@@ -93,7 +93,53 @@ include 'header.php';
 
 </div>
        
-                <!-- /.container-fluid -->
+<!-- /.container-fluid -->
+
+<!-- Custom Styles -->
+<style>
+    .table thead th {
+        background-color: #4e73df;
+        color: white;
+        border: none;
+        text-align: center;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fc;
+        transition: 0.3s ease-in-out;
+    }
+
+    .table td, .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 20px;
+        font-weight: 500;
+        padding: 5px 12px;  
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        border-radius: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        margin-left: 0.5em;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        border-radius: 50%;
+        margin: 0 2px;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #4e73df !important;
+        color: white !important;
+    }
+</style>
 
 </div>
             <!-- End of Main Content -->
