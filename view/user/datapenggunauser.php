@@ -19,7 +19,9 @@ if ($_SESSION['level'] == "Admin") {
 };
 include 'header.php';
 $id_pengguna = $_SESSION['id_pengguna'];
-
+?>
+<?php
+// Include koneksi database
 // Proses upload foto
 if (isset($_POST['upload'])) {
     $namaFile = $_FILES['foto']['name'];
@@ -65,9 +67,7 @@ $foto = !empty($user['foto']) ? $user['foto'] : 'User.png';
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-800"> <?php echo $row['nama']; ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="../../assets/img/User.png">
-                            </a>
+                                <img src="../../uploads/<?= $foto ?>" class="rounded-circle shadow" width="40" height="40" style="object-fit: cover;" alt="Foto Profil">
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
@@ -162,15 +162,6 @@ $foto = !empty($user['foto']) ? $user['foto'] : 'User.png';
                                 </div>
                             </div>
                         </div>
-
-                          </fieldset>
-                        </form>
-                    </div>
-                    <br>
-                </div>
-<!-- <div class="corner2"></div> -->
-
-
 <?php
         }
             ?>
@@ -190,7 +181,6 @@ $foto = !empty($user['foto']) ? $user['foto'] : 'User.png';
     
 
 </div>
-
+<?php include 'footer.php'; ?>
             </div>
             <!-- End of Main Content -->
-<?php include 'footer.php'; ?>

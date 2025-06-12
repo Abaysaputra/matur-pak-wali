@@ -93,7 +93,7 @@ if (isset($_SESSION['level'])) {
 
     <!-- FOOTER TANDA TANGAN -->
     <div class="footer">
-        <p>Purwosari, <?= date('d/m/y') ?><br>Operator,</p>
+        <p>Surabaya, <?= date('d/m/y') ?><br>Operator,</p>
         <br><br><br>
         <p>_____________________</p>
     </div>

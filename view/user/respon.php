@@ -161,11 +161,11 @@
     }
     ?>
     <script>
-    // Scroll ke bawah saat halaman selesai dimuat
-    window.onload = function () {
-        const chatBox = document.querySelector('.chat-box');
-        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
-    };
+        // Scroll ke bawah saat halaman selesai dimuat
+        window.onload = function () {
+            const chatBox = document.querySelector('.chat-box');
+            chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+        };
     </script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </div>

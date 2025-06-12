@@ -18,9 +18,59 @@ if ($_SESSION['level'] == "Admin") {
 <?php
 };
 include 'header.php';
+
 $id_pengguna = $_SESSION['id_pengguna'];
 ?>
+<!-- Custom Styles -->
+<style>
+    .table thead th {
+        background-color: #4e73df;
+        color: white;
+        border: none;
+        text-align: center;
+    }
 
+    .table tbody tr:hover {
+        background-color: #f8f9fc;
+        transition: 0.3s ease-in-out;
+    }
+
+    .table td, .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 20px;
+        font-weight: 500;
+        padding: 5px 12px;  
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        border-radius: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        margin-left: 0.5em;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        border-radius: 50%;
+        margin: 0 2px;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #4e73df !important;
+        color: white !important;
+    }
+    .tambah:hover {
+    background-color: #198754; /* lebih gelap dari btn-success */
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+    }
+</style>
 
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -33,7 +83,8 @@ $id_pengguna = $_SESSION['id_pengguna'];
   
                         $SqlQuery = mysqli_query($koneksi, "SELECT * FROM tb_pengguna where tb_pengguna.id_pengguna =$id_pengguna");
        
-
+                        $user = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_pengguna WHERE id_pengguna = '$id_pengguna'"));
+                        $foto = !empty($user['foto']) ? $user['foto'] : 'User.png';
                         foreach ($SqlQuery as $row ) {
                         ?>
                         <!-- Nav Item - User Information -->
@@ -41,8 +92,7 @@ $id_pengguna = $_SESSION['id_pengguna'];
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-800"> <?php echo $row['nama']; ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="../../assets/img/user.png">
+                                <img src="../../uploads/<?= $foto ?>" class="rounded-circle shadow" width="40" height="40" style="object-fit: cover;" alt="Foto Profil">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -90,9 +140,11 @@ $id_pengguna = $_SESSION['id_pengguna'];
                                 <div class="card-body">
                                     <div class="chart-area">
                                 <div style="width: 100%;margin: 0px auto;">
-                                <!-- Card Body -->
                                 <div class="text">
-                <button class="tambah btn btn-primary m-3" onclick="location.href='../../back/pengaduan/pengisian.php'" type="button">Ajukan Pengaduan</button>
+                                <button class="tambah btn btn-success m-3 shadow-sm" style="border-radius: 30px; font-weight: 600; padding: 10px 20px;" 
+                                        onclick="location.href='../../back/pengaduan/pengisian.php'" type="button">
+                                    <i class="fas fa-plus-circle me-2"></i> Ajukan Pengaduan
+                                </button>
                 <!-- <input type="text" id="KataKunci" name="KataKunci" placeholder="Cari data pengaduan..." required="" value="" autocomplete="off" <?php if (isset($_GET['KataKunci']))  echo $_GET['KataKunci']; ?>">
                     <button class="cari" type="submit">Cari</button>
                     <button class="reset" onclick="location.href='datapengaduanuser.php'" type="button">Reset</button> -->
@@ -168,15 +220,16 @@ $id_pengguna = $_SESSION['id_pengguna'];
                                     <img style="widht: 35px;height: 55px;" src="../../assets/img/<?php echo $row['gambar']; ?>" />
                                 </td> -->
                                 <td>
-                                    <button class= "warning btn btn-warning">
-                                        <a class="edit text-decoration-none text-light fw-semibold" href="../../back/pengaduan/edit.php?id=<?php echo $row['id_pengaduan']; ?>">Edit</a>
-                                    </button>
+                                    <?php if ($row['status'] !== 'Selesai') { ?>
+                                        <button class="warning btn btn-warning">
+                                            <a class="edit text-decoration-none text-light fw-semibold" href="../../back/pengaduan/edit.php?id=<?php echo $row['id_pengaduan']; ?>">Edit</a>
+                                        </button>
+                                    <?php } ?>
                                     <button class="btn btn-danger">
                                         <a class="hapus text-decoration-none text-light fw-semibold" href="../../back/pengaduan/hapuspengaduan.php?id=<?php echo $row['id_pengaduan']; ?>" onclick="return confirm('Anda yakin ingin hapus pengaduan?')">Hapus</a>
                                     </button>
-                                  <!--   <a href="../../back/pengaduan/laporan.php?id=<?php echo $row['id_pengaduan']; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
-                                </td> 
+                                </td>
+
                             </tr>
                         <?php
 
@@ -189,51 +242,7 @@ $id_pengguna = $_SESSION['id_pengguna'];
         </div>
     </div>
 
-<!-- Custom Styles -->
-<style>
-    .table thead th {
-        background-color: #4e73df;
-        color: white;
-        border: none;
-        text-align: center;
-    }
 
-    .table tbody tr:hover {
-        background-color: #f8f9fc;
-        transition: 0.3s ease-in-out;
-    }
-
-    .table td, .table th {
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    .btn-outline-secondary {
-        border-radius: 20px;
-        font-weight: 500;
-        padding: 5px 12px;  
-    }
-
-    .dataTables_wrapper .dataTables_filter input {
-        border-radius: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        padding: 6px 12px;
-        margin-left: 0.5em;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        border-radius: 50%;
-        margin: 0 2px;
-        padding: 5px 10px;
-        border: 1px solid #ddd;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-        background-color: #4e73df !important;
-        color: white !important;
-    }
-</style>
 
     <script src="../../assets/js/jquery-3.6.0.js"></script>
     <!-- <script src=".../assets/js/jquery.dataTables.min.js"></script>

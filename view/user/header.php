@@ -37,7 +37,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <img src="../../assets/img/matur2.png" alt="image" width="40px">
                 </div>
-                <div class="sidebar-brand-text mx-3">Matur Bay</div>
+                <div class="sidebar-brand-text mx-3">Matur Pak Wali</div>
             </a>
 
             <!-- Divider -->
@@ -105,7 +105,7 @@
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="../../assets/img/matur.png" alt="image" width="50px">
-                <p class="text-center mb-2"><strong>Matur Bay</strong> Gunakan dengan bijak demi menncapai kesejahteraan bersama</p>
+                <p class="text-center mb-2"><strong>Matur Pak Wali</strong> Gunakan dengan bijak demi menncapai kesejahteraan bersama</p>
                 <a class="btn btn-success btn-sm" href="datapengaduanuser.php">Ajukan Pengaduan!</a>
             </div>
 

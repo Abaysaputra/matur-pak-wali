@@ -100,7 +100,7 @@ $row = mysqli_fetch_array($sql);
                             $status = $row["status"];
                             if($row["status"] == "Diterima" ){
                                 $status = "Diproses";
-                                $background_color = 'rgba(233, 196, 106, 1)';
+                                $background_color = 'rgba(76, 148, 255, 1)';
                                 
                             }else if($row["status"] == "Diproses"){
                                 $status = "Selesai";

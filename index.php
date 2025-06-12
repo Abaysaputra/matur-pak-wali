@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
     <link rel="icon" href="https://budiutamamandiri.com/favicon.png" type="image/png">
-    <link rel="shortcut icon" href="https://budiutamamandiri.com/favicon.png" type="image/png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendors/bootstrap/bootstrap.min.css">
 

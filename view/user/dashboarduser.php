@@ -44,7 +44,8 @@ include "../../back/koneksi/koneksi.php";
 //kondisi jika parameter pencarian kosong
 
     $SqlQuery = mysqli_query($koneksi, "SELECT * FROM tb_pengguna where tb_pengguna.id_pengguna =$id_pengguna");
-
+    $user = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_pengguna WHERE id_pengguna = '$id_pengguna'"));
+    $foto = !empty($user['foto']) ? $user['foto'] : 'User.png';     
 
 foreach ($SqlQuery as $row ) {
 ?>
@@ -53,8 +54,7 @@ foreach ($SqlQuery as $row ) {
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-800"> <?php echo $row['nama']; ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="../../assets/img/User.png">
+                                <img src="../../uploads/<?= $foto ?>" class="rounded-circle shadow" width="40" height="40" style="object-fit: cover;" alt="Foto Profil">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
