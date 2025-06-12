@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
 ?>
     <script language="JavaScript">
-        alert('Anda Harus Login  Terlebih Dahulu!!');
+        alert('Anda Harus Login Terlebih Dahulu!!');
         document.location = '../../index.php';
     </script>
 <?php
@@ -19,58 +19,30 @@ if ($_SESSION['level'] == "User") {
 };
 include 'header.php';
 ?>
-                <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Data Pengaduan</h1>
 
-                    <!-- Content Row -->
-
-                    <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-12 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Table Pengaduan</h6>
-                                    <div class="dropdown no-arrow">
-                                       
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                <div style="width: 100%;margin: 0px auto;">
-                                <div class="text">
-                <!-- <input type="text" id="KataKunci" name="KataKunci" placeholder="Cari data pengaduan..." required="" value="" autocomplete="off" <?php if (isset($_GET['KataKunci']))  echo $_GET['KataKunci']; ?>">
-                <button class="cari" type="submit">Cari</button>
-                <button class="reset" onclick="location.href='datapengaduanadmin.php'" type="button">Reset</button> -->
-            </div>
-            <div class="content">
-                <table  width="100%" id="tabel" class="table table-striped table table-bordered text-center" cellspacing="0" >
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Tabel Data Pengaduan</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="tabel" class="table table-striped table-bordered">
                     <thead>
-                        <th>No</th>
-                        <th>NIK</th>
-                        
-                        <!-- <th>Tanggal</th> -->
-                        <th>Nama</th>
-                        <!-- <th>Gambar</th> -->
-                        <!-- <th>Aksi</th> -->
+                        <tr>
+                            <th>No</th>
+                            <th>NIK</th>
+                            <th>Nama</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <?php
-                        include "../../back/koneksi/koneksi.php";
                         $SqlQuery = mysqli_query($koneksi, "
                             SELECT * FROM tb_pengaduan 
                             INNER JOIN tb_pengguna ON tb_pengaduan.id_pengguna = tb_pengguna.id_pengguna
@@ -81,55 +53,96 @@ include 'header.php';
                             die("Query error: " . mysqli_error($koneksi));
                         }
 
-                        $no =  1;
-
+                        $no = 1;
                         while ($row = mysqli_fetch_array($SqlQuery)) {
                         ?>
                             <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $row['nik'] ?></td>
                                 <td>
-                                    <?php echo $no++ ?>
+                                    <a class="btn btn-outline-secondary btn-sm" href="pengaduanadmin.php?id_pengguna=<?= $row['id_pengguna'] ?>">
+                                        <?= $row['nama'] ?>
+                                    </a>
                                 </td>
-                                <td>
-                                    <?php echo $row['nik']; ?>
-                                </td>
-                                <!-- <td>
-                                    <?php echo $row['tgl_pengaduan']; ?>
-                                </td> -->
-                                <td>
-                                    <a class="info btn btn-outline-primary" href="pengaduanadmin.php?id_pengguna=<?php echo $row['id_pengguna'] ?>"> <?php echo $row['nama']; ?></a>
-
-                                </td>
-
-
-                              
-                               
                             </tr>
-                        <?php
-
-                        }
-                        ?>
+                        <?php } ?>
                     </tbody>
-
                 </table>
             </div>
         </div>
     </div>
-    <script src="../../assets/js/jquery-3.6.0.js"></script>
-    <!-- <script src=".../assets/js/jquery.dataTables.min.js"></script>
- -->
-    <script src="../../assets/js/jquery.dataTables.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#tabel').DataTable();
-        });
-    </script>
-    
 
 </div>
-       
-                <!-- /.container-fluid -->
+<!-- /.container-fluid -->
 
-            </div>
-            <!-- End of Main Content -->
-<?php include 'footer.php';?>
+<!-- Custom Styles -->
+<style>
+    .table thead th {
+        background-color: #4e73df;
+        color: white;
+        border: none;
+        text-align: center;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fc;
+        transition: 0.3s ease-in-out;
+    }
+
+    .table td, .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 20px;
+        font-weight: 500;
+        padding: 5px 12px;  
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        border-radius: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        margin-left: 0.5em;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        border-radius: 50%;
+        margin: 0 2px;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #4e73df !important;
+        color: white !important;
+    }
+</style>
+
+<!-- JS Scripts -->
+<script src="../../assets/js/jquery-3.6.0.js"></script>
+<script src="../../assets/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tabel').DataTable({
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Cari data...",
+                lengthMenu: "Tampilkan _MENU_ entri",
+                zeroRecords: "Tidak ada data ditemukan",
+                info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+                infoEmpty: "Menampilkan 0 sampai 0 dari 0 entri",
+                infoFiltered: "(difilter dari total _MAX_ entri)",
+                paginate: {
+                    previous: "Sebelumnya",
+                    next: "Berikutnya"
+                }
+            }
+        });
+    });
+</script>
+
+<?php include 'footer.php'; ?>
