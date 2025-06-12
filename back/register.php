@@ -61,7 +61,7 @@ if (isset($_POST['simpan'])) {
     if ($insert) {
         echo "<script>
             alert('Good! Pengguna Berhasil Ditambahkan');
-            window.location.href = '../index.php';
+            window.location.href = '../loginpage.php';
         </script>";
     } else {
         echo "<script>

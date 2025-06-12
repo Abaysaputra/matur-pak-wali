@@ -157,7 +157,7 @@
       </div>
 
       <p class="text-center link-reg">
-        Sudah punya akun? <a href="index.php">Kembali ke login</a>
+        Sudah punya akun? <a href="loginpage.php">Kembali ke login</a>
       </p>
     </form>
   </div>
