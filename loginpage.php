@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
         }
         exit;
     } else {
-        echo "<script>alert('Username atau Password salah'); window.location.href='index.php';</script>";
+        echo "<script>alert('Username atau Password salah'); window.location.href='loginpage.php';</script>";
         exit;
     }
 }
