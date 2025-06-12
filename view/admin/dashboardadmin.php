@@ -138,13 +138,13 @@ include 'header.php';
                                 					],
                                 					backgroundColor: [
                                 					'rgba(255, 99, 132, 1)',
-                                					'rgba(54, 162, 235, 1)',
-                                					'rgba(255, 206, 86, 1)'
+                                					'#ffb703',
+                                					'#2a9d8f'
                                 					],
                                 					borderColor: [
                                 					'rgba(255,99,132,1)',
-                                					'rgba(54, 162, 235, 1)',
-                                					'rgba(255, 206, 86, 1)'
+                                					'#fca311',
+                                					'#2a9d8f'
                                 					],
                                 					borderWidth: 1
                                 				}]

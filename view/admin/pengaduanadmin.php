@@ -130,7 +130,7 @@ if ($_SESSION['level'] == "User") {
                             }
                             else if( $row['status'] === 'Diproses')
                             {
-                          $background_color = 'rgb(76, 148, 255)';
+                          $background_color = '#fca311';
                             }  
                             else if ($row['status'] === 'Selesai')  
                             {

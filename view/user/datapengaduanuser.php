@@ -181,7 +181,7 @@ $id_pengguna = $_SESSION['id_pengguna'];
                                             }
                                             else if( $row['status'] === 'Diproses')
                                             {
-                                          $background_color = '#e9c46a';
+                                          $background_color = '#fca311';
                                             }  
                                             else if ($row['status'] === 'Selesai')  
                                             {
