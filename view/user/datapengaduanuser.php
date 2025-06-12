@@ -168,7 +168,9 @@ $id_pengguna = $_SESSION['id_pengguna'];
                                     <img style="widht: 35px;height: 55px;" src="../../assets/img/<?php echo $row['gambar']; ?>" />
                                 </td> -->
                                 <td>
-                                    <a class="edit" href="../../back/pengaduan/edit.php?id=<?php echo $row['id_pengaduan']; ?>">Edit</a>
+                                    <button class= "warning btn btn-warning">
+                                        <a class="edit text-decoration-none text-light fw-semibold" href="../../back/pengaduan/edit.php?id=<?php echo $row['id_pengaduan']; ?>">Edit</a>
+                                    </button>
                                     <button class="btn btn-danger">
                                         <a class="hapus text-decoration-none text-light fw-semibold" href="../../back/pengaduan/hapuspengaduan.php?id=<?php echo $row['id_pengaduan']; ?>" onclick="return confirm('Anda yakin ingin hapus pengaduan?')">Hapus</a>
                                     </button>
@@ -186,6 +188,53 @@ $id_pengguna = $_SESSION['id_pengguna'];
             </div>
         </div>
     </div>
+
+<!-- Custom Styles -->
+<style>
+    .table thead th {
+        background-color: #4e73df;
+        color: white;
+        border: none;
+        text-align: center;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fc;
+        transition: 0.3s ease-in-out;
+    }
+
+    .table td, .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 20px;
+        font-weight: 500;
+        padding: 5px 12px;  
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        border-radius: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        margin-left: 0.5em;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        border-radius: 50%;
+        margin: 0 2px;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #4e73df !important;
+        color: white !important;
+    }
+</style>
+
     <script src="../../assets/js/jquery-3.6.0.js"></script>
     <!-- <script src=".../assets/js/jquery.dataTables.min.js"></script>
  -->
