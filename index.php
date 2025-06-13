@@ -176,6 +176,7 @@
     <div class="py-3" id="alurpengaduan">
     <div class="text-center" data-aos="fade-up">
         <h3 class="section-title">Alur <span style="color:#ea7c58; font-size: 2rem">Pengaduan</span></h3>
+        <p class="text-muted">Ikuti langkah-langkah berikut untuk mengajukan pengaduan Anda dengan mudah.</p>
     </div>
     <br />
 

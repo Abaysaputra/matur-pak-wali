@@ -42,13 +42,13 @@ include 'header.php';
                                             <th>Nama</th>
                                             <th>No.Handphone</th>
                                             <th>Alamat</th>
-                                            <th>Status</th>
+                                            <th>Foto</th>
                                         </thead>
 
                                         <tbody align="center">
                                             <?php
                                             include "../../back/koneksi/koneksi.php"; 
-                                            $SqlQuery = mysqli_query($koneksi, "SELECT * FROM tb_pengguna ");
+                                            $SqlQuery = mysqli_query($koneksi, "SELECT * FROM tb_pengguna WHERE level = 'User' ORDER BY id_pengguna DESC");
                                             
                                                 $no = 1;
 
@@ -71,7 +71,7 @@ include 'header.php';
                                                             <?php echo $row['alamat_lengkap']; ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['Status']; ?>
+                                                            <img src="../../uploads/<?php echo $row['foto']; ?>" alt="foto pengguna" class="img-fluid rounded-circle" style="width: 50px; height: 50px;">
                                                         </td>
                                                     <?php
                                                 }
