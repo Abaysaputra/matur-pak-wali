@@ -34,6 +34,11 @@ include 'header.php';
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- FontAwesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Animate.css (optional) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 
 
                 <!-- End of Topbar -->
@@ -260,62 +265,63 @@ include 'header.php';
                             </script>
                         </div>
                         </div>
-                    </div>
-                
-                    <!-- Content Row -->
+
+                                    <!-- Content Row -->
                     <div class="row">
+    <!-- Prosedur Pengajuan Aduan -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-lg border-left-primary h-100">
+            <div class="card-header bg-primary text-white">
+                <h6 class="m-0 font-weight-bold"><i class="fas fa-paper-plane mr-2"></i>Prosedur Pengajuan Aduan</h6>
+            </div>
+             <div class="card-body">
+        <div class="text-center">
+            <img class="img-fluid rounded mb-4" style="max-width: 300px;" src="../../assets/img/5127314.jpg" alt="img">
+        </div>
+        <div class="timeline">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex align-items-center">
+                    <span class="badge badge-primary mr-3">1</span> Masyarakat Registrasi
+                </li>
+                <li class="list-group-item d-flex align-items-center">
+                    <span class="badge badge-primary mr-3">2</span> Memilih menu data pengaduan
+                </li>
+                <li class="list-group-item d-flex align-items-center">
+                    <span class="badge badge-primary mr-3">3</span> Ajukan Pengaduan
+                </li>
+                <li class="list-group-item d-flex align-items-center">
+                    <span class="badge badge-primary mr-3">4</span> Tulis Pengaduan
+                </li>
+                <li class="list-group-item d-flex align-items-center">
+                    <span class="badge badge-primary mr-3">5</span> Respon dari Petugas
+                </li>
+            </ul>
+        </div>
+    </div>
+        </div>
+    </div>
 
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
+    <!-- Pengenalan -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-lg border-left-success h-100">
+            <div class="card-header bg-success text-white">
+                <h6 class="m-0 font-weight-bold"><i class="fas fa-bullhorn mr-2"></i>Pengenalan</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <img class="img-fluid rounded" style="max-width: 300px;" src="../../assets/img/bgm.jpg" alt="Pengenalan">
+                </div>
+                <p class="lead text-justify" style="font-size: 1rem;">
+                    Selamat datang di <strong>Matur Pak Wali</strong> — tempat di mana suara Anda dihargai.
+                    Rasakan kemudahan dalam menyampaikan pengaduan dengan cepat, aman, dan transparan.
+                </p>
+                <p class="mb-0"><em>“Suara Anda, Perubahan Kami.”</em></p>
+            </div>
+        </div>
+    </div>
+</div>
 
-                            <!-- Project Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Prosedur Pengajuan Aduan</h6>
-                                </div>
-                                 <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 20rem;"
-                                            src="../../assets/img/5127314.jpg" alt="img">
-                                    </div>
-                                    <p>
-                                        <ul class="list-group list-group-flush">
-                                              <li class="list-group-item">Masyarkat Registrasi</li>
-                                              <li class="list-group-item">Memilih menu data pengaduan</li>
-                                              <li class="list-group-item">Ajukan Pengaduan</li>
-                                              <li class="list-group-item">Tulis Pengaduan</li>
-                                              <li class="list-group-item">Respon</li>
-                                        </ul>
-                                    </p>
-                                  <!--   <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a> -->
-                                </div>
-                            </div>
 
-                        </div>
-
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Pengenalan</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 20rem;"
-                                            src="../../assets/img/bgm.jpg" alt="img">
-                                    </div>
-                                    <p>Temukan pengalaman mengutarakan pendapat dengan bebas.
-                                        Ayoo
-                                            
-                                            Ajukan Pengaduan dengan bebas di Matur Bay</p>
-                                </div>
-                            </div>
-
-                            
-
-                        </div>
                     </div>
 
                 </div>
