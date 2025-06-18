@@ -107,68 +107,68 @@ include 'header.php';
                                         <canvas id="myChart"></canvas>
                                     </div>
                                     <script>
-                                		var ctx = document.getElementById("myChart").getContext('2d');
-                                		var myChart = new Chart(ctx, {
-                                			type: 'pie',
-                                			data: {
-                                				labels: ["Diterima","Diproses","Selesai"],
-                                				datasets: [{
-                                					label: '',
-                                					data: [
-                                                    <?php 
-                                					 $sql = "SELECT * From tb_pengaduan where status = 'Diterima'";
-                                                     $result = mysqli_query($koneksi, $sql);                    
-                                                     $rowDataPengaduan = mysqli_num_rows($result);
-                                                     
-                                                         echo  $rowDataPengaduan ;
-                                                      
-                                					?>, 
-                                					<?php 
-                                					 $sql1 = "SELECT * From tb_pengaduan where status = 'Diproses'";
-                                                     $result1 = mysqli_query($koneksi, $sql1);                    
-                                                     $rowDataPengaduan1 = mysqli_num_rows($result1);
-                                                     
-                                                         echo  $rowDataPengaduan1 ;
-                                                      
-                                					?>, 
-                                					<?php 
-                                					 $sql2 = "SELECT * From tb_pengaduan where status = 'Selesai'";
-                                                     $result2= mysqli_query($koneksi, $sql2);                    
-                                                     $rowDataPengaduan2 = mysqli_num_rows($result2);
-                                                     
-                                                         echo  $rowDataPengaduan2 ;
-                                                      
-                                					?>
-                                					
-                                					],
-                                					backgroundColor: [
-                                					'rgba(255, 99, 132, 1)',
-                                					'#ffb703',
-                                					'#2a9d8f'
-                                					],
-                                					borderColor: [
-                                					'rgba(255,99,132,1)',
-                                					'#fca311',
-                                					'#2a9d8f'
-                                					],
-                                					borderWidth: 1
-                                				}]
-                                			},
-                                			options: {
-                                				scales: {
-                                					yAxes: [{
-                                						ticks: {
-                                							beginAtZero:true
-                                						}
-                                					}]
-                                				}
-                                			}
-                                		});
-                                	</script>
-                                    </div>
+                                            var ctx = document.getElementById("myChart").getContext('2d');
+                                            var myChart = new Chart(ctx, {
+                                                type: 'pie',
+                                                data: {
+                                                    labels: ["Diterima","Diproses","Selesai"],
+                                                    datasets: [{
+                                                        label: '',
+                                                        data: [
+                                                        <?php 
+                                                        $sql = "SELECT * From tb_pengaduan where status = 'Diterima'";
+                                                        $result = mysqli_query($koneksi, $sql);                    
+                                                        $rowDataPengaduan = mysqli_num_rows($result);
+                                                        
+                                                            echo  $rowDataPengaduan ;
+                                                        
+                                                        ?>, 
+                                                        <?php 
+                                                        $sql1 = "SELECT * From tb_pengaduan where status = 'Diproses'";
+                                                        $result1 = mysqli_query($koneksi, $sql1);                    
+                                                        $rowDataPengaduan1 = mysqli_num_rows($result1);
+                                                        
+                                                            echo  $rowDataPengaduan1 ;
+                                                        
+                                                        ?>, 
+                                                        <?php 
+                                                        $sql2 = "SELECT * From tb_pengaduan where status = 'Selesai'";
+                                                        $result2= mysqli_query($koneksi, $sql2);                    
+                                                        $rowDataPengaduan2 = mysqli_num_rows($result2);
+                                                        
+                                                            echo  $rowDataPengaduan2 ;
+                                                        
+                                                        ?>
+                                                        
+                                                        ],
+                                                        backgroundColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        '#ffb703',
+                                                        '#2a9d8f'
+                                                        ],
+                                                        borderColor: [
+                                                        'rgba(255,99,132,1)',
+                                                        '#fca311',
+                                                        '#2a9d8f'
+                                                        ],
+                                                        borderWidth: 1
+                                                    }]
+                                                },
+                                                options: {
+                                                    scales: {
+                                                        yAxes: [{
+                                                            ticks: {
+                                                                beginAtZero:true
+                                                            }
+                                                        }]
+                                                    }
+                                                }
+                                            });
+                                </script>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <!-- Data Pesebaran per daerah -->
                         <?php
                         $lokasi_data = [];

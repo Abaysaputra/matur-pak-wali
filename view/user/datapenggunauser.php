@@ -48,18 +48,23 @@ if (isset($_POST['upload'])) {
 $user = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_pengguna WHERE id_pengguna = '$id_pengguna'"));
 $foto = !empty($user['foto']) ? $user['foto'] : 'User.png';
 ?>
+<style>
+    .content .upload-label img:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <?php
-        include "../../back/koneksi/koneksi.php";
-
-      
-
+    .content .upload-info {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+</style>
+<div class="topbar-divider d-none d-sm-block"></div>
+<?php
+include "../../back/koneksi/koneksi.php";
         //kondisi jika parameter pencarian kosong
-  
-            $SqlQuery = mysqli_query($koneksi, "SELECT * FROM tb_pengguna where tb_pengguna.id_pengguna =$id_pengguna");
-       
-
+        $SqlQuery = mysqli_query($koneksi, "SELECT * FROM tb_pengguna where tb_pengguna.id_pengguna =$id_pengguna");
         foreach ($SqlQuery as $row ) {
         ?>
                         <!-- Nav Item - User Information -->
@@ -102,80 +107,85 @@ $foto = !empty($user['foto']) ? $user['foto'] : 'User.png';
                                 <div class="content w-auto rounded-1 p-5 min-vh-50">
                                      <div class="text-center p-4">
                                         <img src="../../uploads/<?= $foto ?>" class="rounded-circle shadow" width="150" height="150" style="object-fit: cover;" alt="Foto Profil">
-                                        <form method="POST" enctype="multipart/form-data" class="mt-3">
-                                        <!-- Label dengan ikon upload -->
-                                        <label for="file-upload">
-                                            <img src="../../assets/img/user-avatar.png" width="40" height="40" alt="Upload Foto">
-                                        </label>
-                                        <!-- Input file disembunyikan -->
-                                        <input type="file" id="file-upload" name="foto" accept="image/*" required hidden>
-                                        
-                                        <br><br>
-                                        <button type="submit" name="upload" class="btn btn-sm btn-primary">Ganti Foto</button>
-                                    </form>
-
+                                            <form method="POST" enctype="multipart/form-data" class="mt-3">
+                                                <!-- Label dengan ikon upload -->
+                                                <label for="file-upload" class="upload-label d-inline-block text-center">
+                                                    <img src="../../assets/img/user-avatar.png" width="40" height="40" alt="Upload Foto">
+                                                    <div class="upload-info">Klik ikon untuk mengganti foto,  <p class="text-muted">Format: jpg, jpeg, png, gif. Maksimal 2MB.</p></div>
+                                                </label>
+                                                <input type="file" id="file-upload" name="foto" accept="image/*" required hidden>
+                                               
+                                                <br><br>
+                                                <button type="submit" name="upload" class="btn btn-sm btn-primary" id="uploadBtn">
+                                                    <span id="btnText">Ganti Foto</span>
+                                                    <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                </button>
+                                            </form>
                                     </div>
                                     <br><br><br><br>
-                                    <!-- <div class="log d-flex mt-5">
-                                        <img src="../../assets/img/matur2.png" alt="image" class="logo" width="40px">
-                                        <p class="">Matur Bay</p>
-                                    </div> -->
                                 </div>
                                 <div class="text p-4">
                                 </div>
                         <form>
                           <fieldset disabled>
                             <div class="card shadow p-4">
-                            <div class="card-header bg-primary text-white fw-bold fs-4 text-center">
-                                Profil Kamu
+                                <div class="card-header bg-primary text-white fw-bold fs-4 text-center">
+                                    Profil Kamu
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label fw-bold">NIK</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext border bg-light rounded px-3" value="<?php echo $row['nik']; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label fw-bold">Nama</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext border bg-light rounded px-3" value="<?php echo $row['nama']; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label fw-bold">Nomor HP</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext border bg-light rounded px-3" value="<?php echo $row['no_hp']; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label fw-bold">Alamat Lengkap</label>
+                                        <div class="col-sm-9">
+                                            <textarea readonly class="form-control-plaintext border bg-light rounded px-3"><?php echo $row['alamat_lengkap']; ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label fw-bold">Status</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext border bg-light rounded px-3" value="<?php echo $row['Status']; ?>">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label fw-bold">NIK</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" readonly class="form-control-plaintext border bg-light rounded px-3" value="<?php echo $row['nik']; ?>">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label fw-bold">Nama</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" readonly class="form-control-plaintext border bg-light rounded px-3" value="<?php echo $row['nama']; ?>">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label fw-bold">Nomor HP</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" readonly class="form-control-plaintext border bg-light rounded px-3" value="<?php echo $row['no_hp']; ?>">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label fw-bold">Alamat Lengkap</label>
-                                    <div class="col-sm-9">
-                                        <textarea readonly class="form-control-plaintext border bg-light rounded px-3"><?php echo $row['alamat_lengkap']; ?></textarea>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label fw-bold">Status</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" readonly class="form-control-plaintext border bg-light rounded px-3" value="<?php echo $row['Status']; ?>">
-                                    </div>
-                                </div>
+                            <?php
+                                    }
+                                        ?>
                             </div>
                         </div>
-<?php
-        }
-            ?>
-</div>
-        </div>
-    </div>
+                    </div>
+    <!-- script -->
     <script src="../../assets/js/jquery-3.6.0.js"></script>
-    <!-- <script src=".../assets/js/jquery.dataTables.min.js"></script>
- -->
     <script src="../../assets/js/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tabel').DataTable();
+        });
+        const uploadBtn = document.getElementById('uploadBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+
+        uploadBtn.addEventListener('click', function () {
+            btnText.textContent = "Mengunggah...";
+            btnSpinner.classList.remove('d-none');
         });
     </script>
     
